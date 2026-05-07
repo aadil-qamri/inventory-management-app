@@ -3,6 +3,7 @@ import ProfitLossChart from "@/components/profit-loss-chart"
 import Link from "next/link"
 import { ArrowLeft, TrendingUp, TrendingDown, DollarSign } from "lucide-react"
 
+export const dynamic = "force-dynamic";
 export default async function AnalyticsPage() {
   const inventoryData = await getInventory();
 
@@ -14,7 +15,6 @@ export default async function AnalyticsPage() {
 
   return (
     <div className="max-w-7xl mx-auto p-8">
-      {/* Header & Back Button */}
       <div className="flex items-center mb-8">
         <Link 
           href="/" 
