@@ -70,7 +70,7 @@ export function DataTable<TData, TValue>({
     const csvRows = (data as any[]).map(item => {
       return [
         item.sku,
-        `"${item.product || item.name || ""}"`, // Failsafe for product name
+        `"${item.product || item.name || ""}"`,
         item.category,
         item.stock,
         item.cost,
@@ -78,8 +78,10 @@ export function DataTable<TData, TValue>({
       ].join(",");
     });
 
+    // 3. Combine headers and rows with a newline
     const csvString = [headers.join(","), ...csvRows].join("\n");
 
+    // 4. Trigger the download
     const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
