@@ -92,16 +92,16 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center justify-between py-4">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4">
         <Input
           placeholder="Search products..."
           value={globalFilter ?? ""}
           onChange={(event) => setGlobalFilter(String(event.target.value))}
-          className="max-w-sm bg-white dark:bg-neutral-900 border-gray-300 dark:border-border"
+          className="w-full sm:max-w-sm bg-white dark:bg-neutral-900 border-gray-300 dark:border-border" 
         />
         <button
           onClick={handleExportCSV}
-          className="flex items-center px-4 hover:cursor-pointer py-2 text-sm font-medium rounded-md bg-white dark:bg-neutral-900 border border-gray-200 dark:border-border text-neutral-900 dark:text-white transition-colors hover:bg-gray-100 dark:hover:bg-neutral-800"
+          className="w-full sm:w-auto flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md bg-white dark:bg-neutral-900 border border-gray-200 dark:border-border text-neutral-900 dark:text-white transition-colors hover:bg-gray-100 dark:hover:bg-neutral-800"
         >
           <Download className="mr-2 h-4 w-4" />
           Export CSV
