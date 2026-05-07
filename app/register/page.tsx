@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -22,13 +23,17 @@ export default function RegisterPage() {
     try {
 
       const res = await fetch("/api/auth/register", {
+
+      const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
+      if (!res.ok) {
         const data = await res.json();
+        throw new Error(data.message || data.error || "Something went wrong");
         throw new Error(data.message || data.error || "Something went wrong");
       }
 
@@ -44,6 +49,24 @@ export default function RegisterPage() {
       }
 
 
+      router.push("/dashboard");
+      router.refresh();
+
+    } catch (err: any) {
+      setError(err.message || "Failed to connect to server");
+
+
+      const loginRes = await signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      });
+
+      if (loginRes?.error) {
+        throw new Error("Registration successful, but auto-login failed. Please login manually.");
+      }
+
+      
       router.push("/dashboard");
       router.refresh();
 
