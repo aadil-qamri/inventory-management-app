@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         const client = await clientPromise;
-        const db = client.db(); 
+        const db = client.db("inventory_db"); 
         const user = await db.collection("users").findOne({ 
           email: credentials.email 
         });
