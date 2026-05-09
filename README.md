@@ -2,8 +2,7 @@
 
 A modern, highly responsive, full-stack inventory management dashboard built to track stock, visualize financial analytics, and manage products efficiently. 
 
-![Dashboard Preview](link-to-your-dashboard-screenshot.png) 
-*Replace the link above with a screenshot of your actual dashboard!*
+![Dashboard Preview](/public/myApp.png)
 
 ## ✨ Key Features
 
@@ -23,6 +22,15 @@ A modern, highly responsive, full-stack inventory management dashboard built to 
 * **Components:** Custom UI components (inspired by shadcn/ui) & Lucide Icons
 * **Data Visualization:** [Recharts](https://recharts.org/)
 * **Table Management:** TanStack React Table
+
+## 🤖 Built with AI Assistance
+
+While the core architecture and logic are my own, I utilized **Google Gemini** throughout the development process to accelerate my workflow. 
+
+Gemini assisted with:
+- Troubleshooting and debugging complex errors.
+- Generating boilerplate code and UI components.
+- Refining the documentation (including helping write this README!).
 
 ## 🚀 Getting Started
 
