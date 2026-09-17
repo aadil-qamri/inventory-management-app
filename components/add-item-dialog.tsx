@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Loader2, Plus } from "lucide-react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export function AddItemDialog() {
   const [open, setOpen] = useState(false)
@@ -46,8 +47,8 @@ export function AddItemDialog() {
         <DialogHeader>
           <DialogTitle>Add New Inventory Item</DialogTitle>
           <DialogDescription>
-      Fill in the details below to add a new product to your inventory database.
-    </DialogDescription>
+            Fill in the details below to add a new product to your inventory database.
+          </DialogDescription>
         </DialogHeader>
         <form onSubmit={onSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
@@ -62,31 +63,32 @@ export function AddItemDialog() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="category">Category Tag</Label>
-            <select 
-              id="category" 
-              name="category" 
-              defaultValue="Electronics"
-              className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <option value="Electronics">Electronics</option>
-              <option value="Furniture">Furniture</option>
-              <option value="Apparel">Apparel</option>
-              <option value="Software">Software</option>
-              <option value="Accessories">Accessories</option>
-            </select>
+            <Select name="category" defaultValue="Electronics">
+              <SelectTrigger id="category" className="w-full hcp">
+                <SelectValue placeholder="Select a category" />
+              </SelectTrigger>
+
+              <SelectContent>
+                <SelectItem value="Electronics">Electronics</SelectItem>
+                <SelectItem value="Furniture">Furniture</SelectItem>
+                <SelectItem value="Apparel">Apparel</SelectItem>
+                <SelectItem value="Software">Software</SelectItem>
+                <SelectItem value="Accessories">Accessories</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
           <div className="grid grid-cols-3 gap-4">
-             <div className="space-y-2">
+            <div className="space-y-2">
               <Label htmlFor="stock">Stock</Label>
               <Input id="stock" name="stock" type="number" required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="cost">Cost</Label>
-              <Input id="cost" name="cost" type="number" step="0.01" required />
+              <Input id="cost" name="cost" type="number" step="0.1" required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="price">Price</Label>
-              <Input id="price" name="price" type="number" step="0.01" required />
+              <Input id="price" name="price" type="number" step="0.1" required />
             </div>
           </div>
           <Button type="submit" className="w-full" disabled={loading}>

@@ -61,7 +61,7 @@ export default function InventoryChart({ data }: ChartProps) {
                 <div className="flex bg-gray-100 dark:bg-neutral-800 p-1 rounded-lg">
                     <button
                         onClick={() => setActiveChart('bar')}
-                        className={`p-1.5 rounded-md flex hover:cursor-pointer items-center transition-all ${activeChart === 'bar'
+                        className={`p-1.5 rounded-md flex hcp items-center transition-all ${activeChart === 'bar'
                             ? 'bg-white dark:bg-neutral-700 shadow-sm text-neutral-900 dark:text-white'
                             : 'text-gray-500 hover:text-neutral-900 dark:hover:text-white'
                             }`}
@@ -70,7 +70,7 @@ export default function InventoryChart({ data }: ChartProps) {
                     </button>
                     <button
                         onClick={() => setActiveChart('pie')}
-                        className={`p-1.5 rounded-md hover:cursor-pointer flex items-center transition-all ${activeChart === 'pie'
+                        className={`p-1.5 rounded-md hcp flex items-center transition-all ${activeChart === 'pie'
                             ? 'bg-white dark:bg-neutral-700 shadow-sm text-neutral-900 dark:text-white'
                             : 'text-gray-500 hover:text-neutral-900 dark:hover:text-white'
                             }`}

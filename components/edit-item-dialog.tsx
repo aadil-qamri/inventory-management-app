@@ -7,6 +7,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Loader2, Pencil } from "lucide-react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select"
 
 // Define what an item looks like based on your DB
 interface EditItemDialogProps {
@@ -53,7 +60,7 @@ export function EditItemDialog({ item }: EditItemDialogProps) {
           <DialogTitle>Edit Product: {item.product}</DialogTitle>
           <DialogDescription>Update the inventory details below.</DialogDescription>
         </DialogHeader>
-        
+
         <form onSubmit={onSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -67,21 +74,22 @@ export function EditItemDialog({ item }: EditItemDialogProps) {
           </div>
           <div className="space-y-2">
             <Label htmlFor="category">Category Tag</Label>
-            <select 
-              id="category" 
-              name="category" 
-              defaultValue={item.category}
-              className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <option value="Electronics">Electronics</option>
-              <option value="Furniture">Furniture</option>
-              <option value="Apparel">Apparel</option>
-              <option value="Software">Software</option>
-              <option value="Accessories">Accessories</option>
-            </select>
+            <Select name="category" defaultValue={item.category}>
+              <SelectTrigger id="category" className="w-full">
+                <SelectValue placeholder="Select a category" />
+              </SelectTrigger>
+
+              <SelectContent>
+                <SelectItem value="Electronics">Electronics</SelectItem>
+                <SelectItem value="Furniture">Furniture</SelectItem>
+                <SelectItem value="Apparel">Apparel</SelectItem>
+                <SelectItem value="Software">Software</SelectItem>
+                <SelectItem value="Accessories">Accessories</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
           <div className="grid grid-cols-3 gap-4">
-             <div className="space-y-2">
+            <div className="space-y-2">
               <Label htmlFor="stock">Stock</Label>
               {/* Pre-fill with defaultValue */}
               <Input id="stock" name="stock" type="number" defaultValue={item.stock} required />
